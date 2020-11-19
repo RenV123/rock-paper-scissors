@@ -5,28 +5,32 @@
     { id: 'paper', url: './css/images/paper.svg' },
   ];
 
-  var userPickedHand = '';
-  var systemPickedHand = '';
+  var userHand = '';
+  var systemHand = '';
   const systemPickRandomHand = () => {
     //Make sure the new random pick is always different from the last one.
-    var oldSystemPickedHand = systemPickedHand;
+    var oldSystemHand = systemHand;
     do {
-      systemPickedHand = hands[Math.floor(Math.random() * 3)].id;
-    } while (oldSystemPickedHand === systemPickedHand);
+      systemHand = hands[Math.floor(Math.random() * 3)].id;
+    } while (oldSystemHand === systemHand);
   };
 
   document.getElementById('run').addEventListener('click', () => {
     systemPickRandomHand();
 
     var hand = hands.find((hand) => {
-      return hand.id === systemPickedHand;
+      return hand.id === systemHand;
     });
     document.getElementById('system-drawn-hand').src = hand.url;
     var gameStatus = document.getElementById('game-status');
 
-    switch (userPickedHand) {
+    calculateGameOutcome(userHand, systemHand, gameStatus);
+  });
+
+  const calculateGameOutcome = (userHand, systemHand, gameStatus) => {
+    switch (userHand) {
       case 'scissors':
-        switch (systemPickedHand) {
+        switch (systemHand) {
           case 'scissors':
             gameStatus.innerHTML = "It's a draw.";
             break;
@@ -39,7 +43,7 @@
         }
         break;
       case 'rock':
-        switch (systemPickedHand) {
+        switch (systemHand) {
           case 'scissors':
             gameStatus.innerHTML = 'You won.';
             break;
@@ -52,7 +56,7 @@
         }
         break;
       case 'paper':
-        switch (systemPickedHand) {
+        switch (systemHand) {
           case 'scissors':
             gameStatus.innerHTML = 'You lose.';
             break;
@@ -67,7 +71,7 @@
       default:
         console.log('Invalid operation.');
     }
-  });
+  };
 
   const resetButtons = () => {
     Array.from(document.querySelectorAll('button.hand')).forEach(($btn) => {
@@ -85,7 +89,7 @@
     $btn.addEventListener(
       'click',
       () => {
-        userPickedHand = $btn.id;
+        userHand = $btn.id;
         setActivehandButton($btn);
       },
       false
