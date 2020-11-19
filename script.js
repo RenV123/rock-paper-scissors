@@ -69,11 +69,24 @@
     }
   });
 
+  const resetButtons = () => {
+    Array.from(document.querySelectorAll('button.hand')).forEach(($btn) => {
+      $btn.style.background = 'white';
+    });
+  };
+
+  const setActivehandButton = (activeButton) => {
+    //First set all button backgrounds back to white
+    resetButtons();
+    activeButton.style.background = '#007bff';
+  };
+
   Array.from(document.querySelectorAll('button.hand')).forEach(($btn) =>
     $btn.addEventListener(
       'click',
       () => {
         userPickedHand = $btn.id;
+        setActivehandButton($btn);
       },
       false
     )
