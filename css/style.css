@@ -1,5 +1,10 @@
 .card {
-  width: 400px;
+  width: 350px;
+  height: 350px;
+}
+
+.img-fluid {
+  width: 300px;
   height: auto;
 }
 

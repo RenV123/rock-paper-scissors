@@ -13,34 +13,43 @@
 
 </head>
 
-<body>
+<body class="d-flex flex-column align-items-center">
     <h1>Rock Paper Scissor</h1>
     <div class="game-container">
         <div class="row buttons-container">
             <div class="col">
                 <button class="card p-5" id="paper">
-                    <img src="./css/images/paper.svg" class="img-fluid p-5" alt="Paper icon">
+                    <div class="card-body">
+                        <img src="./css/images/paper.svg" class="img-fluid" alt="Paper icon">
+                    </div>
                 </button>
             </div>
             <div class="col">
                 <button class="card p-5" id="rock">
-                    <embed src="./css/images/rock.svg" class="img-fluid p-5" alt="Paper icon">
+                    <div class="card-body">
+                        <img src="./css/images/rock.svg" class="img-fluid" alt="Paper icon">
+                    </div>
                 </button>
             </div>
             <div class="col">
                 <button class="card p-5" id="scissors">
-                    <img src="./css/images/scissors.svg" class="img-fluid p-5" alt="Paper icon">
+                    <div class="card-body">
+                        <img src="./css/images/scissors.svg" class="img-fluid" alt="Paper icon">
+                    </div>
                 </button>
             </div>
         </div>
 
     </div>
-    <button class="card" id="run">
-        <p>Play</p>
+    <button class="btn btn-primary m-5 px-5 py-2" id="run">
+        Play
     </button>
     <div class="game-result">
-        <div class="game-img-container">
-            <img src="./css/images/paper.svg" id="system-drawn-hand" class="img-fluid" alt="Paper icon">
+        <div class="card game-img-container">
+            <div class="card-body">
+                <img class="img-fluid p-5" src="./css/images/paper.svg" id="system-drawn-hand" class="img-fluid"
+                    alt="Paper icon">
+            </div>
         </div>
     </div>
     <div>
