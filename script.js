@@ -7,12 +7,16 @@
 
   var userPickedHand = '';
   var systemPickedHand = '';
-  const drawRandomHand = () => {
-    return hands[Math.floor(Math.random() * 3)].id;
+  const systemPickRandomHand = () => {
+    //Make sure the new random pick is always different from the last one.
+    var oldSystemPickedHand = systemPickedHand;
+    do {
+      systemPickedHand = hands[Math.floor(Math.random() * 3)].id;
+    } while (oldSystemPickedHand === systemPickedHand);
   };
 
   document.getElementById('run').addEventListener('click', () => {
-    systemPickedHand = drawRandomHand();
+    systemPickRandomHand();
 
     var hand = hands.find((hand) => {
       return hand.id === systemPickedHand;
@@ -65,7 +69,7 @@
     }
   });
 
-  Array.from(document.querySelectorAll('button')).forEach(($btn) =>
+  Array.from(document.querySelectorAll('button.hand')).forEach(($btn) =>
     $btn.addEventListener(
       'click',
       () => {
